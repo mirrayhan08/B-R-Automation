@@ -1,0 +1,4 @@
+VAR
+	LEDon : BOOL;
+	LEDoff : BOOL;
+END_VAR
