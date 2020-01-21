@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Parameters>
+  <Connection>
+    <DeviceParameters>/IF=tcpip /LOPO=11159 /SA=1</DeviceParameters>
+    <ConnectionParameters>/COMT=2500 /RT=1000 /AM=* /DAIP=127.0.0.1 /REPO=11160 /ANSL=1</ConnectionParameters>
+  </Connection>
+  <AsProject>
+    <ApjFullFileName>D:\PLC\BaseLD\BaseLD.apj</ApjFullFileName>
+    <ProjectName>BaseLD</ProjectName>
+    <ActiveConfigurationName>Config1</ActiveConfigurationName>
+    <LicenseDataFolder>D:\PLC\BaseLD\Temp\Objects\Config1\X20CP1586</LicenseDataFolder>
+  </AsProject>
+  <General>
+    <DeleteParameterFile>false</DeleteParameterFile>
+  </General>
+</Parameters>
