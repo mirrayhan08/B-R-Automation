@@ -1,0 +1,20 @@
+VAR
+	controlPos0 : BOOL;
+	controlPos1 : BOOL;
+	controlPos2 : BOOL;
+	rotaryMotor : BOOL;
+	linearMotor : BOOL;
+	gripper : BOOL;
+	isSliderStateBit : BOOL;
+	iRotaryMotionComplete : BOOL;
+	slider : BOOL;
+	iLinearMotionComplete : BOOL;
+	prevFlag : USINT;
+	flag : USINT;
+	waitingFlag : BOOL;
+	test : BOOL;
+	destinationX : USINT;
+	destinationY : USINT;
+	sourceY : USINT;
+	sourceX : USINT;
+END_VAR

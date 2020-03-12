@@ -1,0 +1,175 @@
+iRotaryMotionComplete
+iLinearMotionComplete
+controlPos0
+controlPos1
+controlPos2
+isSLiderStateBit
+slider
+gripper
+linearMotor
+rotaryMotor
+
+---------------------------------------------------------------------
+void activateLinearMotor(){
+    linearMotor=1;
+    linearMotor=0;
+}
+
+void activateRotaryMotor(){
+    rotaryMotor=1;
+    rotaryMotor=0;
+}
+
+void gripperOpen(){
+    gripper=0;
+}
+
+void gripperClose()
+{
+    if(isSliderStateOpen()){
+        gripper=1;
+    }
+}
+
+void sliderExtend(){
+    if(isSliderStateClose()){
+        slider=1;
+    }
+}
+
+void sliderClose(){
+    if(isSliderStateOpen()){
+        slider=0;
+    }
+}
+
+bool isSliderStateOpen(){
+    return isSliderStateBit==0;
+}
+
+bool isSliderStateClose(){
+    return isSLiderStateBit==1;
+}
+
+bool isMotionComplete(){
+    return iRotaryMotionComplete && iLinearMotionComplete;
+}
+
+void gotoPosSingleAxis(int bitSeq,bool isLinear){
+    for(int i=0;i<3;i++){
+        bit=(bitSeq && (1<<i))!=0;
+        if(i==0){
+            controlPos0=bit;
+        }
+        if(i==1){
+            controlPos1=bit;
+        }
+        if(i==2){
+            controlPos2=bit;
+        }
+        if(isLinear){
+            activateLinearMotor();
+        }
+        else{
+            activateRotaryMotor();
+        }
+    }
+}
+
+void gotoPosDoubleAxis(int linearBitSeq, int rotyaryBitSeq){
+    gotoPosSingleAxis(linearBitSeq,true);
+    gotoPosSingleAxis(rotyaryBitSeq,false);
+}
+-------------------------------------------------------------------------------------------------
+
+
+//homing complete
+if(flag==1){
+    if(flag!=prevFlag){
+        gotoPosDoubleAxis(3,7);
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isMotionComplete()){
+        flag=2;
+    }
+}
+
+//source position open slider close
+if(flag==2){
+    if(flag!=prevFlag){
+        sliderExtend();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isSliderStateOpen()){
+        flag=3;
+    }
+}
+
+//source position slider open
+if(flag==3){
+    if(flag!=prevFlag){
+        gripperClose();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag){
+        flag=4;
+    }
+}
+
+//object grabbed
+if(flag==4){
+    if(flag!=prevFlag){
+        gotoPosSingleAxis();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isMotionComplete()){
+        flag=5;
+    }
+}
+
+//object taken from source and slider open
+if(flag==5){
+    if(flag!=prevFlag){
+        sliderClose();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isSliderStateClose()){
+        flag=6;
+    }
+}
+
+//slider closed with object 
+if(flag==6){
+    if(flag!=prevFlag){
+        gotoPosDoubleAxis();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isMotionComplete()){
+        flag=7;
+    }
+}
+
+// reached to destination
+if(flag==7){
+    if(flag!=prevFlag){
+        sliderExtend();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag && isSliderStateOpen()){
+        flag=8;
+    }
+}
+
+//slider open toward destination
+if(flag==8){
+    if(flag!=prevFlag){
+        gripperOpen();
+        prevFlag=flag;
+    }
+    if(flag==prevFlag){
+        flag=9;
+    }
+}
+
+--------------------------------------------------------
+
