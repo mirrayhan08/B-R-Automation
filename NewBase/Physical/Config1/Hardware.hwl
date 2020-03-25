@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<BR.AS.HardwareTopology Version="0.0.0.1">
+  <TimeStamps>
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="03/10/2020 15:24:43" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="X20BM11a" Type="X20BM11" X="250" Y="100" />
+    <Module Name="X20DIF371" Type="X20DIF371" X="250" Y="100" />
+    <Module Name="X20TB1F1" Type="X20TB1F" X="250" Y="127" />
+    <Module Name="X20BM11b" Type="X20BM11" X="263" Y="100" />
+    <Module Name="X20DOF322" Type="X20DOF322" X="263" Y="100" />
+    <Module Name="X20TB1F2" Type="X20TB1F" X="263" Y="127" />
+    <Module Name="X20CP1586" Type="X20CP1586" X="100" Y="100" />
+  </Modules>
+  <Links />
+  <InfoElements />
+</BR.AS.HardwareTopology>

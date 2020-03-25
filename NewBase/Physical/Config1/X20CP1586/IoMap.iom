@@ -1,0 +1,13 @@
+VAR_CONFIG
+	::Program:controlPos0 AT %QX."X20DOF322".DigitalOutput01;
+	::Program:controlPos1 AT %QX."X20DOF322".DigitalOutput02;
+	::Program:controlPos2 AT %QX."X20DOF322".DigitalOutput03;
+	::Program:rotaryMotor  AT %QX."X20DOF322".DigitalOutput05;
+	::Program:linearMotor  AT %QX."X20DOF322".DigitalOutput04;
+	::Program:gripper  AT %QX."X20DOF322".DigitalOutput06;
+	::Program:slider  AT %QX."X20DOF322".DigitalOutput07;
+	::Program:iRotaryMotionComplete AT %IX."X20DIF371".DigitalInput01;
+	::Program:iLinearMotionComplete AT %IX."X20DIF371".DigitalInput02;
+	::Program:isSliderStateBit  AT %IX."X20DIF371".DigitalInput03;
+	::Program:test AT %QX."X20DOF322".DigitalOutput08;
+END_VAR
